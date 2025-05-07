@@ -7,6 +7,7 @@ async function main() {
     // TODO : Agregar pregunta para comida favorita
     const comidaFav = await ask('¿Cuál es tu comida favorita? ');
     console.log(`Hola ${name}, tienes ${age} años y tu comida favorita es ${comidaFav}.`); // Se ponen comillas invertidas(``) para poder usar ${} y concatenar variables
+    calculadora();
 }
 
 async function calculadora(){
@@ -20,4 +21,4 @@ async function calculadora(){
 }
 // Se ejecuta en la terminal, estando en la carpeta semana1, con el comando node ejercicio1.
 // Según eso se pone npm install primero pero no lo puse y así corrió bien
-calculadora();
+main();
