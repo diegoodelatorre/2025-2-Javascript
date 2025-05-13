@@ -32,7 +32,17 @@ async function main(){
     console.log("Descendente");
     for (let i = personas.length -1; i >= 0; i--) {
         saludar(personas[i]);
-        
+    }
+    personas.forEach((persona) => saludar(persona)); // el forEach solo se hace de 1 en 1 recorriendo el arreglo
+    // En la sintaxis personas es el nombre de mi variable por así decirlo y se llama a la función saludar
+
+    const frutas = ["Fresas", "Mango", "Kiwi", "Manzana", "Uvas"];
+    const cajon = Number(await ask("¿Qué cajón quieres abrir? "));
+
+    for (let j = 1; j <= 5; j++) {
+        if (j === cajon) {
+            console.log("En el cajón hay : ", frutas[j-1]);
+        }
     }
 }
 
