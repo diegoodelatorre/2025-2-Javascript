@@ -182,13 +182,10 @@ Esto significa que hay diferencias entre tu versión del archivo y la versión n
 1. Abre el archivo que tiene conflicto con Visual Studio Code y este te marcará el archivo con algo como esto:
 
 ```javascript
-<<<<<<< HEAD
 // Tu versión (la que ya tenías)
 const resultado = "Mi versión del ejercicio";
-=======
 // Nueva versión (del contenido original del curso)
 const resultado = "Versión nueva del curso";
->>>>>>> upstream/main
 ```
 
 2. Elige cuál parte conservar
