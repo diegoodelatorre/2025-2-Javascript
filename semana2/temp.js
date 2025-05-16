@@ -1,35 +1,80 @@
 const { ask } = require('../helpers/input');
 
-async function main(){
-    const nombres = ["Ana", "Roberto", "Luis", "Maria"];
+function obtenerPromedio(numeros){
+    let total = 0;
+    for (let i = 0; i < numeros.length; i++) {
+        total += numeros[i];
+    }
+    const promedio = total / numeros.length;
 
+    return promedio;
+}
+
+function obtenerMayor(numeros){
+    let mayor = numeros[0];
+    for (let i = 1; i < numeros.length; i++) {
+        if (numeros[i] > mayor) {
+            mayor = numeros[i];
+        }
+    }
+
+    return mayor;
+}
+
+function obtenerMenor(numeros){
+    let menor = numeros[0];
+    for (let i = 1; i < numeros.length; i++) {
+        if (numeros[i] < menor) {
+            menor = numeros[i];
+        }
+    }
+    return menor;
+}
+
+function resumenEstadistico(numeros){
+    const promedio = obtenerPromedio(numeros);
+    const mayor = obtenerMayor(numeros);
+    const menor = obtenerMenor(numeros);
+    
+    return {menor, mayor, promedio}
+    return {'menor': menor, 'mayor': mayor, 'promedio': promedio} // lo mismo pero con un diccionario
+}
+
+function nombresVocal(nombres){
+    const vocales = ["a", "e", "i", "o", "u", "á", "á", "í", "ó", "ú"];
+    let nombresVocal = [];
     for (let i = 0; i < nombres.length; i++) {
-        if (nombres[i].length >= 5) {
-            console.log(`${nombres[i]} tiene más de 5 caracteres`);
-        } else {
-            console.log(`${nombres[i]} tiene solo ${nombres[i].length} caracteres`);
+        // for (let j = 0; j < vocales.length; j++) {
+        //     if (nombres[i][0].toLowerCase() === vocales[j]) {
+        //         nombresVocal.push(nombres[i]);
+        //     }
+        // }
+
+        // Manera más corta y eficiente de hacerlo, el incluides busca dentro de las vocales a ver si la primera letra del nombre está ahí
+        let primeraLetra = nombres[i][0].toLowerCase();
+        if (vocales.includes(primeraLetra)) {
+            nombresVocal.push(nombres[i]);
         }
     }
 
-    const nombres2 = ["Oscar", "Ana", "Luis", "Eduardo", "Isabel", "María", "Úrsula", "Pedro"];
-    const vocales = ["a", "e", "i", "o", "u", "á", "é", "í", "ó", "ú"];
+    return nombresVocal;
+}
 
-    for (let i = 0; i < nombres2.length; i++) {
-        const primeraLetra = nombres2[i][0].toLowerCase();
-        for (let j = 0; j < vocales.length; j++) {
-            if (primeraLetra === vocales[j]) {
-                console.log(`${nombres2[i]} empieza con ${vocales[j].toUpperCase()}`);
-            }
-        }
-    }
+async function main(){
+    const edades = [20, 18, 25, 30, 22];
+    const lista = [5, 20, 8, 99, 3];
+    const datos = [70, 80, 90, 100, 85];
+    const nombres = ["Ana", "Esteban", "Luis", "Oscar", "María"];
+    console.log(`Promedio = ${obtenerPromedio(edades)}`);
+    console.log(`El número mayor de ${lista} es: ${obtenerMayor(lista)}`);
 
-    const palabraAlReves = await ask("Escribe una palabra: ");
-    let resultado = "";
+    const estadistica = resumenEstadistico(datos);
+    console.log(`El resumen estadístico de ${datos}`);
+    console.log(`El número menor es: ${estadistica.menor}`);
+    console.log(`El número mayor es: ${estadistica.mayor}`);
+    console.log(`El promedio es: ${estadistica.promedio}`);
 
-    for (let i = palabraAlReves.length - 1; i >= 0; i--) { // se pone palabraAlReves.length -1 para que coincida con el índice de la última letra
-        resultado += palabraAlReves[i];
-    }
-    console.log("Al revés ", resultado);
+    console.log(`De los nombres ${nombres}, solo ${nombresVocal(nombres)} empiezan con una vocal`);
 }
 
 main();
