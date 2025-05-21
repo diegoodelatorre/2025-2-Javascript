@@ -19,7 +19,7 @@
 const { ask } = require('../helpers/input');
 
 async function agregarAlumno(alumnos){
-    let alumno = {
+    const alumno = {
         nombre: "",
         edad: 0,
         calificacion: 0
@@ -29,7 +29,7 @@ async function agregarAlumno(alumnos){
     alumno.edad = Number(await ask("Ingresa la edad del alumno: "));
     alumno.calificacion = Number(await ask("Ingresa la calificación del alumno: "));
     alumnos.push(alumno);
-    console.log("Alumno agregado");
+    console.log("Alumno agregado\n");
 }
 
 function obtenerPromedio(alumnos){
@@ -65,28 +65,29 @@ function obtenerMenor(alumnos){
 
 function mostrarDatos(alumnos){
     if (alumnos.length === 0) {
-        console.log("No hay alumnos registrados");
+        console.log("No hay alumnos registrados\n");
         return;
     }
     console.log(`Alumnos aprobados: ${alumnos.filter(alumno => alumno.calificacion >= 70).length}
-                \nAlumnos que pueden votar: ${alumnos.filter(alumno => alumno.edad >= 18).length}
-                \nPromedio general de califiaciones: ${obtenerPromedio(alumnos)}
-                \nCalificación mayor: ${obtenerMayor(alumnos)}
-                \nCalificación menor: ${obtenerMenor(alumnos)}`); // el .filter() devuelve un nuevo arreglo con los elementos que cumplen la condición
+Alumnos que pueden votar: ${alumnos.filter(alumno => alumno.edad >= 18).length}
+Promedio general de califiaciones: ${obtenerPromedio(alumnos)}
+Calificación mayor: ${obtenerMayor(alumnos)}
+Calificación menor: ${obtenerMenor(alumnos)}\n`); // el .filter() devuelve un nuevo arreglo con los elementos que cumplen la condición
+// si no se usara el filter se usaría una función aparte con un ciclo que recorra siempre alumnos[i].calificacion y verifique si aprobó
 }
 
 async function main(){
     let opc = 0;
     let alumnos = [];
     do {
-        console.log("\n---Menú---\n1. Agregar alumnos\n2. Mostrar datos de los alumnos\n3. Salir");
+        console.log("---Menú---\n1. Agregar alumnos\n2. Mostrar datos de los alumnos\n3. Salir");
         opc = Number(await ask('Ingresa una opción: '));
         switch (opc) {
             case 1: await agregarAlumno(alumnos); break;
             case 2: await mostrarDatos(alumnos); break;
             case 3: console.log("Saliendo..."); break;
         
-            default: console.log("Opción no válida"); break;
+            default: console.log("Opción no válida\n"); break;
         }
     } while (opc !== 3);
 };
