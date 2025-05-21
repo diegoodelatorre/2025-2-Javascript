@@ -50,13 +50,13 @@ function analizarCalificaciones(calificaciones) {
         sumaCalif += calificaciones[i];
     }
 
-    return {'aprobados' : aprobados, 'reprobados' : reprobados, 'promedio' : sumaCalif/calificaciones.length, 'mayor' : obtenerMayor(calificaciones), 'menor' : obtenerMenor(calificaciones)};
+    return {'aprobados' : aprobados, 'reprobados' : reprobados, 'promedio' : sumaCalif/calificaciones.length};
 }
 
 async function main(){
     const calificaciones = [85, 92, 67, 74, 88, 56, 90, 73, 81, 95];
     const resultado = analizarCalificaciones(calificaciones);
-    console.log(`Aprobados: ${resultado.aprobados}\nReprobados: ${resultado.reprobados}\nPromedio: ${resultado.promedio}\nMayor: ${resultado.mayor}\nMenor: ${resultado.menor}`);
+    console.log(`Aprobados: ${resultado.aprobados}\nReprobados: ${resultado.reprobados}\nPromedio: ${resultado.promedio}\nMayor: ${obtenerMayor(calificaciones)}\nMenor: ${obtenerMenor(calificaciones)}`);
 }
 
 main();
