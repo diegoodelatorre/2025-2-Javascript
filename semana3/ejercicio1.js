@@ -5,46 +5,42 @@ async function main() {
 
   const personas = [
     {
-      nombre: "Rodrigo",
-      edad: 36,
-      profesion: "Desarrollador",
-      hobbies: ["nadar", "futbol", "leer"],
-      birthDate: "1988-08-08",
-      saludar: function () {
-        console.log(`Hola mi nombre es ${this.nombre} `);
-      }
-    },
-    {
       nombre: "Claudia",
-      edad: 36,
-      profesion: "Desarrollador",
-      hobbies: ["nadar", "futbol", "leer"],
-      birthDate: "1988-08-08",
+      edad: 34,
+      ocupacion: "Desarrollador",
       saludar: function () {
-        console.log(`Hola mi nombre es ${this.nombre} `);
+        console.log(`Hola mi nombre es ${this.nombre}`);
       }
     },
     {
-      nombre: "Heriberto",
-      edad: 36,
-      profesion: "Desarrollador",
-      hobbies: ["nadar", "futbol", "leer"],
-      birthDate: "1988-08-08",
+      nombre: "Carlos",
+      edad: 28,
+      ocupacion: "Estudiante",
       saludar: function () {
-        console.log(`Hola mi nombre es ${this.nombre} `);
+        console.log(`Hola mi nombre es ${this.nombre}`);
       }
-    },
+    }
   ];
 
-  const alumno1 = {
+  // personas[0].saludar();
+  // personas[1].saludar();
+
+  for (let i = 0; i < personas.length; i++) {
+    personas[i].saludar();
+  }
+
+  const alumno = {
     nombre: "Yei Yei",
-    matricula: "AL089778",
-    promedio: 90,
     edad: 18,
+    ocupacion: "Estudiante",
+    esMayorDeEdad: function () {
+      if (this.edad >= 18) { return true; }
+      else { return false; }
+    },
     mostrarInfo: function () {
-      console.log(`Nombre: ${this.nombre}| \nMatricula: ${this.matricula}| \nPromedio: ${this.promedio}|`);
-      if (this.edad >= 18) {
-        console.log("Es mayor de edad");
+      console.log(`Hola soy: ${this.nombre}, tengo ${this.edad}, me dedico a ser: ${this.ocupacion} `);
+      if (this.esMayorDeEdad()) {
+        console.log("Y SOY MAYOR DE EDAD");
       } else {
         console.log("No es mayor de edad");
       }
